@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
+import { FirebaseAuthProvider } from "@/lib/auth/firebase";
+import Overlay from "@/components/Overlay/Overlay";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Nunito({ subsets: ["latin"], variable: "--main-font" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>
+        <Overlay />
+        <FirebaseAuthProvider>{children}</FirebaseAuthProvider>
+      </body>
     </html>
   );
 }
