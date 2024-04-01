@@ -58,7 +58,7 @@ function Main() {
           backgroundColor: "var(--deep-purple)",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-evenly",
           flexDirection: "column",
           padding: "1rem",
           gap: "0rem",
@@ -418,6 +418,12 @@ function Main() {
 }
 
 function Login() {
+  useEffect(() => {
+    const SignInGoogle = document.getElementById(
+      "sign-in-google"
+    ) as HTMLDivElement;
+    if (!LoginStatus.get()) SignInGoogle.style.display = "block";
+  });
   return (
     <div
       id="login-page"
@@ -430,7 +436,7 @@ function Login() {
         height: "100svh",
         width: "100vw",
         boxShadow: "0px 0px 40px rgba(0,0,0,0.8)",
-        transform: `translateX(${"-100"}%)`,
+        transform: `translateX(${"0"}%)`,
         transition: "transform 1s var(--cubic-bezier)",
         backgroundColor: "white",
         zIndex: "2",
@@ -456,7 +462,12 @@ function Login() {
           style={{ marginBottom: "4rem" }}
         />
       </div>
-      <GoogleSignIn height="10%" width="auto" />
+      <div
+        id="sign-in-google"
+        style={{ height: "20%", width: "20%", display: "none" }}
+      >
+        <GoogleSignIn height="100%" width="auto" />
+      </div>
       <p
         style={{
           color: "var(--obsidian)",
