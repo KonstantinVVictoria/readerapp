@@ -430,7 +430,7 @@ function Login() {
         height: "100svh",
         width: "100vw",
         boxShadow: "0px 0px 40px rgba(0,0,0,0.8)",
-        transform: `translateX(${LoginStatus.get() ? "-100" : "0"}%)`,
+        transform: `translateX(${"-100"}%)`,
         transition: "transform 1s var(--cubic-bezier)",
         backgroundColor: "white",
         zIndex: "2",
