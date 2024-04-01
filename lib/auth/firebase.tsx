@@ -107,10 +107,11 @@ function FirebaseAuthProvider(props: AuthProviderProps) {
 
 export const LoginStatus = {
   set: (status: boolean) => {
-    localStorage.setItem("is_logged_in", `${status}`);
+    if (localStorage) localStorage.setItem("is_logged_in", `${status}`);
   },
   get: () => {
-    return localStorage.getItem("is_logged_in") === "true";
+    if (localStorage) return localStorage.getItem("is_logged_in") === "true";
+    else false;
   },
 };
 async function signInWithGoogle(
